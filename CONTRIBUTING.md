@@ -20,51 +20,72 @@ Thank you for considering contributing to HIA! This document provides guidelines
 
 Please be respectful and considerate of others when contributing to this project. We welcome contributions from everyone regardless of level of experience, gender, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, religion, or nationality.
 
-## Getting Started
+#### Getting Started 📝
 
-### Development Environment Setup
+1. Clone the repository:
 
-1. **Fork and clone the repository**:
-   ```bash
-   git clone https://github.com/harshhh28/hia.git
-   cd hia
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Configure environment variables**:
-   Create a `.streamlit/secrets.toml` file with the following variables:
-   ```toml
-   SUPABASE_URL = "your-supabase-url"
-   SUPABASE_KEY = "your-supabase-key"
-   GROQ_API_KEY = "your-groq-api-key"
-   ```
-
-4. **Set up Supabase database**:
-   - Use the SQL script provided at `public/db/script.sql` to set up the required schema
-   - Optional: Turn off email confirmation on signup in Supabase settings
-
-5. **Run the application**:
-   ```bash
-   streamlit run src/main.py
-   ```
-
-### Project Structure
-
-Familiarize yourself with the project structure:
+```bash
+git clone https://github.com/Aswath-Ramana/Health_dashboard.git
+cd Health_dashboard
 ```
-hia/
+
+2. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Required environment variables (in `.streamlit/secrets.toml`):
+
+```toml
+SUPABASE_URL = "your-supabase-url"
+SUPABASE_KEY = "your-supabase-key"
+GROQ_API_KEY = "your-groq-api-key"
+```
+
+4. Set up Supabase database schema:
+
+The application requires the following tables in your Supabase database:
+
+![database schema](https://raw.githubusercontent.com/harshhh28/hia/main/public/db/schema.png)
+
+You can use the SQL script provided at `public/db/script.sql` <a href="https://www.github.com/Aswath-Ramana/Health_dashboard/blob/main/public/db/script.sql">[link]</a> to set up the required database schema.
+
+(PS: You can turn off the email confimation on signup in Supabase settings -> signup -> email)
+
+5. Run the application:
+
+```bash
+streamlit run src\main.py
+```
+
+## 📁 Project Structure
+
+```
+Health_dashboard/
+├── requirements.txt
+├── README.md
 ├── src/
 │   ├── main.py                 # Application entry point
 │   ├── auth/                   # Authentication related modules
+│   │   ├── auth_service.py     # Supabase auth integration
+│   │   └── session_manager.py  # Session management
 │   ├── components/             # UI Components
-│   ├── config/                 # Configuration files
-│   ├── services/               # Service integrations
-│   ├── agents/                 # Agent-based architecture components
-│   └── utils/                  # Utility functions
+│   │   ├── analysis_form.py    # Report analysis form
+│   │   ├── auth_pages.py       # Login/Signup pages
+│   │   ├── footer.py          # Footer component
+│   │   └── sidebar.py         # Sidebar navigation
+│   ├── config/                # Configuration files
+│   │   ├── app_config.py      # App settings
+│   │   └── prompts.py         # AI prompts
+│   ├── services/              # Service integrations
+│   │   └── ai_service.py      # AI service integration
+│   ├── agents/                # Agent-based architecture components
+│   │   ├── agent_manager.py   # Agent management
+│   │   └── model_fallback.py  # Model fallback logic
+│   └── utils/                 # Utility functions
+│       ├── validators.py      # Input validation
+│       └── pdf_extractor.py   # PDF processing
 ```
 
 ## Development Workflow
