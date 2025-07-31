@@ -5,7 +5,7 @@ import time
 
 def get_github_stars():
     try:
-        response = requests.get("https://github.com/Aswath-Ramana/streamlit-fastener-agent")
+        response = requests.get("https://github.com/Aswath-Ramana/Health_Dashboard")
         if response.status_code == 200:
             return response.json()["stargazers_count"]
         return None
@@ -59,7 +59,7 @@ def show_footer(in_sidebar=False):
                     background: rgba(100, 181, 246, 0.05);
                     transition: all 0.2s ease;
                 ">
-                    <a href='https://github.com/harshhh28/hia' 
+                    <a href='https://github.com/Aswath-Ramana/Health_Dashboard' 
                        target='_blank' 
                        style='
                            color: #64B5F6;
@@ -87,21 +87,6 @@ def show_footer(in_sidebar=False):
                     gap: 4px;
                     transition: all 0.2s ease;
                 ">
-                    <a href='https://harshgajjar.vercel.app' 
-                       target='_blank' 
-                       style='
-                           color: #1976D2;
-                           text-decoration: none;
-                           font-weight: 500;
-                           transition: all 0.2s ease;
-                           display: inline-flex;
-                           align-items: center;
-                           gap: 4px;
-                       '
-                       onmouseover="this.style.color='{PRIMARY_COLOR}'; this.style.textDecoration='underline'"
-                       onmouseout="this.style.color='#1976D2'; this.style.textDecoration='none'">
-                       Created by Aswath Ramana
-                    </a>
                 </span>
             </p>
         </div>
